@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import "bulma-helpers/css/bulma-helpers.min.css";
+import "bulma/css/bulma.css";
+import Input from "./components/Input";
+import GetPokemon from "./components/GetPokemon";
 
 function App() {
+  const [pokemon, setPokemon] = useState("");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <h1 className="title is-1 has-margin-15">Pokédex</h1>
+        <Input pokemon={(pokemon) => setPokemon(pokemon)} />
+        <GetPokemon filter={pokemon} />
+      </div>
     </div>
   );
 }
